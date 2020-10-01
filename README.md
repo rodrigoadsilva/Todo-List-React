@@ -1,3 +1,6 @@
+# To-Do List React
+
+A to-do list made with React using the typescript template.<br/>
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
