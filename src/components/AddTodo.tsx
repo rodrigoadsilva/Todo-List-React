@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers';
 import * as yup from 'yup';
 import { TodoContextType } from '../contexts/TodoContextType'
+import { Link } from 'react-router-dom';
 
 const schema = yup.object().shape({
     title: yup.string().required('Invalid task'),
@@ -28,16 +29,21 @@ const AddTodo = () => {
     }
 
     return(
-        <form onSubmit={handleSubmit<AddTodoForm>(onSubmit)}>
-            <h4>New task</h4>
-            <div className="uk-margin uk-width-1-1">
-                <input type="text" name="title" id="title" placeholder="Coding a to-do list..." className="uk-input" ref={register} />
-                <span><small><strong className="uk-text-danger">{errors.title?.message}</strong></small></span>
+        <div className="uk-container">
+            <div className="uk-flex uk-flex-right">
+                <Link to="/"><button className="uk-button uk-button-small uk-button-danger">Cancel</button></Link>
             </div>
-            <div className="uk-width-1-1">
-                <button type="submit" className="uk-button uk-button-primary">Register</button>
-            </div>
-        </form>
+            <form onSubmit={handleSubmit<AddTodoForm>(onSubmit)}>
+                <h4>New task</h4>
+                <div className="uk-margin uk-width-1-1">
+                    <input type="text" name="title" id="title" placeholder="Coding a to-do list..." className="uk-input" ref={register} />
+                    <span><small><strong className="uk-text-danger">{errors.title?.message}</strong></small></span>
+                </div>
+                <div className="uk-width-1-1">
+                    <button type="submit" className="uk-button uk-button-primary">Register</button>
+                </div>
+            </form>
+        </div>
     );
 }
 
